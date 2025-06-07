@@ -1,4 +1,4 @@
-name: CI and Checkstyle for Java Invoice
+name: Checkstyle for report project
 on: [push]
 jobs:
   checkstyle:
