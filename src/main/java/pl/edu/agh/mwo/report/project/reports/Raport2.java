@@ -12,7 +12,7 @@ public class Raport2 {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours", "Percent");
         List<List<String>> rows = new ArrayList<>();
-
+        final int oneHundredPercent = 100;
         float grandTotal = 0;
 
 
@@ -37,7 +37,7 @@ public class Raport2 {
 
             String projectName = "Project " + (i + 1);
             String hoursStr = String.format("%.2f", projectTime);
-            String percentStr = grandTotal > 0 ? String.format("%.2f%%", (projectTime / grandTotal) * 100) : "0.00%";
+            String percentStr = grandTotal > 0 ? String.format("%.2f%%", (projectTime / grandTotal) * oneHundredPercent) : "0.00%";
 
             rows.add(Arrays.asList(projectName, hoursStr, percentStr));
         }
