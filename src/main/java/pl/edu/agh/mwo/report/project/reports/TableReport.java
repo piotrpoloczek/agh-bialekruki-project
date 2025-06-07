@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.report.project.reports;
 
 import java.util.List;
 
+@Getter
 public class TableReport {
 
     private String name;
@@ -13,21 +14,4 @@ public class TableReport {
         this.headers = headers;
         this.values = values;
     }
-
-
-    public String getName() {
-        return name;
-    }
-
-
-    public List<String> getHeaders() {
-        return headers;
-    }
-
-
-    public List<List<String>> getValues() {
-        return values;
-    }
 }
-
-
