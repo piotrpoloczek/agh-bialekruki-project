@@ -40,10 +40,14 @@ public class InputManager {
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-d":
-                    if (i + 1 < args.length) date = args[++i];
+                    if (i + 1 < args.length) {
+                        date = args[++i];
+                    }
                     break;
                 case "-r":
-                    if (i + 1 < args.length) reportType = ReportType.fromInteger(Integer.parseInt(args[++i]));
+                    if (i + 1 < args.length) {
+                        reportType = ReportType.fromString(args[++i]);
+                    }
                     break;
                 case "-t":
                     // Keep adding arguments to tags until we hit another flag or end of args
@@ -74,7 +78,8 @@ public class InputManager {
     }
 
     private void printHelp() {
-        System.out.println("Usage: java -jar report.jar [-d date] [-r report_type] [-t tag1 tag2 ...] [-l label1 label2 ...] [-e] [path]");
+        System.out.println("Usage: java -jar report.jar [-d date] [-r report_type] "
+                + "[-t tag1 tag2 ...] [-l label1 label2 ...] [-e] [path]");
         System.out.println("Options:");
         System.out.println("  -d date            Date in the format YYYY-MM-DD");
         System.out.println("  -r report_type     Report type (1-4)");

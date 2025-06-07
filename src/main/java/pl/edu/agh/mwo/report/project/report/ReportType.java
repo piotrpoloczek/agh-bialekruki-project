@@ -41,17 +41,18 @@ public enum ReportType {
      *          </ul>
      * @return The corresponding ReportType enum constant, or null if no match is found
      */
-    public static ReportType fromInteger(int x) {
-        switch(x) {
-            case 1:
+    public static ReportType fromString(String x) {
+        switch (x) {
+            case "1":
                 return USER_HOURS_ALL_PROJECTS;
-            case 2:
+            case "2":
                 return HOURS_PER_PROJECT;
-            case 3:
+            case "3":
                 return DETAILS_PER_USER;
-            case 4:
+            case "4":
                 return TOP_10;
+            default:
+                return null;
         }
-        return null;
     }
 }

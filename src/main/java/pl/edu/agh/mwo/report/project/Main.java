@@ -6,6 +6,5 @@ public class Main {
         System.out.println("Welcome to Bialekruki project!");
 
         InputManager inputManager = new InputManager(args);
-
     }
 }
