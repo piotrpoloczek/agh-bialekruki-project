@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Raport2 {
+public class HoursPerProjectPercent {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours", "Percent");
         List<List<String>> rows = new ArrayList<>();
@@ -42,6 +42,6 @@ public class Raport2 {
             rows.add(Arrays.asList(projectName, hoursStr, percentStr));
         }
 
-        return new TableReport("Raport 2", headers, rows);
+        return new TableReport("Raport 3", headers, rows);
     }
 }
