@@ -16,4 +16,12 @@ public class TableReport {
         this.headers = headers;
         this.values = values;
     }
+
+    public void print() {
+        System.out.println(name);
+        System.out.println("Headers: " + headers);
+        System.out.println("Values: " + values);
+
+        values.forEach(System.out::println);
+    }
 }
