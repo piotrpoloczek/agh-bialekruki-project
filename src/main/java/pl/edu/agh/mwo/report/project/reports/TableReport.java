@@ -1,5 +1,7 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import lombok.Getter;
+
 import java.util.List;
 
 @Getter
