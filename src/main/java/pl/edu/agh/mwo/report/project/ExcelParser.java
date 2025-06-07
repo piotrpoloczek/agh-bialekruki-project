@@ -74,6 +74,4 @@ public class ExcelParser {
         }
         return builder.toString();
     }
-
-
 }

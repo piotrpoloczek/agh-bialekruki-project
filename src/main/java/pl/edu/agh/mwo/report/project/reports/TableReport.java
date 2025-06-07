@@ -1,5 +1,7 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import lombok.Getter;
+
 import java.util.List;
 
 @Getter
@@ -13,5 +15,13 @@ public class TableReport {
         this.name = name;
         this.headers = headers;
         this.values = values;
+    }
+
+    public void print() {
+        System.out.println(name);
+        System.out.println("Headers: " + headers);
+        System.out.println("Values: " + values);
+
+        values.forEach(System.out::println);
     }
 }
