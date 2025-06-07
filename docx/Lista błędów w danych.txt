@@ -1,0 +1,65 @@
+Najwięcej danych jest w katalogu dane/2012, jest tam styczeń (01) oraz luty (02), dodano kilku nowych pracowników.
+
+Katalog dane/2013 jest do sprawdzenia czy da się to odpalić na innym katalogu, jest tam styczeń (01), luty (02) oraz marzec (03). Liczba danych jest mała. 
+
+Liczba projektów: Projekt 1; Projekt 2; Projekt 3, Projekt 4
+_____________________________________________________________
+
+Błędy w danych:
+_____________________________________________________________
+
+Folder 2012:
+_____________________________________________________________
+
+1) ścieżka: dane/2012/01/Nowak_Anna.xsl
+
+	Projekt 1:
+		a) wiersz 4, kolumna pierwsza (data)
+		b) wiersz 5, kolumna 3 (czas)
+		c) wiersz 6, kolumna 2 (zadanie)
+		
+
+	Projekt 4: 
+		a) wiersz 5, kolumna 2 i 3 (zadanie, czas)
+
+
+2) ścieżka: dane/2012/02/Drewno_Andrzej.xsl
+	
+	Projekt 2:
+		a) wiersz 12, kolumna 1 (data)
+		b) wiersz 17, kolumna 2 (zadanie)
+		c) dodatkowe wiersze nr 18, 19, 20, 21, 22
+
+
+3) ścieżka: dane/2012/02/Nowak_Anna.xsl
+	
+	Projekt 4:
+		a) dodatkowy wiersz nr 12
+
+
+____________________________________________________________
+
+Folder 2013
+____________________________________________________________
+
+4) ścieżka: dane/2013/01/Nowak_Anna.xsl
+
+	Projekt 1:
+		a) wiersz 2, kolumna pierwsza (data)
+		b) wiersz 5, kolumna 2 (zadanie)
+		c) wiersz 10, kolumna 3 (czas)
+
+
+	Projekt 4: 
+		a) wiersz 5, kolumna 3 (czas)
+
+
+5) ścieżka: dane/2013/01/Drewno_Andrzej.xml
+
+	Projekt 2:
+		a) wiersz 4, kolumna 2 (zadanie)
+	
+
+	Projekt 4:
+		a) dodatkowe wiersze nr 9 i 8
+
