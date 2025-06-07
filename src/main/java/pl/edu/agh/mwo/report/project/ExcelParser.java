@@ -20,43 +20,47 @@ import java.util.List;
 
 public class ExcelParser {
 
-
     public static List<Project> parseExcelToProjectList(Path givenPath) throws IOException {
         List<Path> paths = listOfAllPathsToExcels(givenPath);
         List<Project> projects = new ArrayList<>();
-
 
         paths.stream()
                 .forEach(path -> {
                     try (FileInputStream fileInputStream = new FileInputStream(path.toString());
                          Workbook workbook = WorkbookFactory.create(fileInputStream)) {
                         int numberOfSheets = workbook.getNumberOfSheets();
-                        for (int i = 0; i < numberOfSheets; i++) {
-                            Project project = new Project(workbook.getSheetName(i));
-                            Sheet sheet = workbook.getSheetAt(i);
-                            File file = new File(String.valueOf(path));
-                            String nameWithoutExtension = convertNameWithoutExtension(file.getName());
-                            User user = new User(nameWithoutExtension);
-                            project.addUser(user);
-
-                            for (Row row : sheet) {
-                                if (row.getRowNum() > 0) {
-                                    Task task = new Task(
-                                            row.getCell(0).getDateCellValue(),
-                                            row.getCell(1).getStringCellValue(),
-                                            Float.parseFloat(String.valueOf(row.getCell(2).getNumericCellValue())));
-                                    user.addTask(task);
-                                }
-                            }
-                            projects.add(project);
-                        }
+                        createProjectsFromSelectedPath(path, numberOfSheets, workbook, projects);
                     } catch (FileNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 });
+
         return projects;
+    }
+
+    private static void createProjectsFromSelectedPath(Path path, int numberOfSheets, Workbook workbook, List<Project> projects) {
+        for (int i = 0; i < numberOfSheets; i++) {
+            Project project = new Project(workbook.getSheetName(i));
+            Sheet sheet = workbook.getSheetAt(i);
+            File file = new File(String.valueOf(path));
+            String nameWithoutExtension = convertNameWithoutExtension(file.getName());
+            User user = new User(nameWithoutExtension);
+            project.addUser(user);
+
+            for (Row row : sheet) {
+                if (row.getRowNum() > 0) {
+                    Task task = new Task(
+                            row.getCell(0).getDateCellValue(),
+                            row.getCell(1).getStringCellValue(),
+                            Float.parseFloat(String.valueOf(row.getCell(2).getNumericCellValue())));
+                    user.addTask(task);
+                }
+            }
+
+            projects.add(project);
+        }
     }
 
     private static List<Path> listOfAllPathsToExcels(Path path) throws IOException {
