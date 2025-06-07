@@ -17,7 +17,11 @@ public class Main {
 
         InputManager inputManager = new InputManager(args);
         List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
-        System.out.println(projectList);
+
+        for (Project project : projectList) {
+            System.out.println("\nProject:");
+            System.out.println(project);
+        }
 
         System.out.println("Raport");
 
