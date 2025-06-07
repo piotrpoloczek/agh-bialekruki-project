@@ -13,10 +13,8 @@ public class Raport1 {
 
         for (Project project : projects) {
             List<String> row = new ArrayList<>();
-            row.add(project.getUserFullName());
-            row.add(String.valueOf(project.getHours()));
-            row.add(project.getName());
-            rows.add(row);
+            row.add(project.
+
         }
 
         return new TableReport("Raport 1", headers, rows);
