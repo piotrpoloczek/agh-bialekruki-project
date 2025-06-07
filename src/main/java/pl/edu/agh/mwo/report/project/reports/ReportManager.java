@@ -1,4 +1,4 @@
 package pl.edu.agh.mwo.report.project.reports;
 
-public class ReportMenager {
+public class ReportManager {
 }
