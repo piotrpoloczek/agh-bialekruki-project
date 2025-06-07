@@ -1,6 +1,8 @@
 package pl.edu.agh.mwo.report.project.reports;
 
 import pl.edu.agh.mwo.report.project.model.Project;
+import pl.edu.agh.mwo.report.project.model.Task;
+import pl.edu.agh.mwo.report.project.model.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,16 +12,34 @@ public class Raport2 {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours", "Percent");
         List<List<String>> rows = new ArrayList<>();
+        final int oneHundredPercent = 100;
+        float grandTotal = 0;
 
-        int totalHours = projects.stream().mapToInt(Project::getHours).sum();
 
         for (Project project : projects) {
-            List<String> row = new ArrayList<>();
-            row.add(project.getName());
-            row.add(String.valueOf(project.getHours()));
-            double percent = totalHours == 0 ? 0 : (project.getHours() * 100.0 / totalHours);
-            row.add(String.format("%.2f%%", percent));
-            rows.add(row);
+            for (User user : project.getUserList()) {
+                for (Task task : user.getTaskList()) {
+                    grandTotal += task.getTimeSpentOnTheTask();
+                }
+            }
+        }
+
+
+        for (int i = 0; i < projects.size(); i++) {
+            Project project = projects.get(i);
+            float projectTime = 0;
+
+            for (User user : project.getUserList()) {
+                for (Task task : user.getTaskList()) {
+                    projectTime += task.getTimeSpentOnTheTask();
+                }
+            }
+
+            String projectName = "Project " + (i + 1);
+            String hoursStr = String.format("%.2f", projectTime);
+            String percentStr = grandTotal > 0 ? String.format("%.2f%%", (projectTime / grandTotal) * oneHundredPercent) : "0.00%";
+
+            rows.add(Arrays.asList(projectName, hoursStr, percentStr));
         }
 
         return new TableReport("Raport 2", headers, rows);

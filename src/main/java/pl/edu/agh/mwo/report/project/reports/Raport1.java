@@ -4,7 +4,11 @@ import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Raport1 {
     public TableReport generate(List<Project> projects) {
