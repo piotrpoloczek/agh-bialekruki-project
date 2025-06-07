@@ -13,7 +13,6 @@ public class Raport1 {
 
         for (Project project : projects) {
             List<String> row = new ArrayList<>();
-            row.add(project.
 
         }
 
