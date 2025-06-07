@@ -1,0 +1,15 @@
+name: CI and Checkstyle for Java Invoice
+on: [push]
+jobs:
+  checkstyle:
+    name: Run for checkstyle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '22'
+          distribution: 'adopt'
+      - name: Run checkstyle
+        run: mvn checkstyle:check
