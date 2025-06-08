@@ -19,24 +19,22 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-//        System.out.println("Welcome to Bialekruki project!");
-//
-//        InputManager inputManager = new InputManager(args);
-//        List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
-//
-//        for (Project project : projectList) {
-//            System.out.println("\nProject:");
-//            System.out.println(project);
-//        }
-//
-//        System.out.println("Raport");
-//
-//        Raport2 raport2 = new Raport2();
-//        TableReport tableReport = raport2.generate(projectList);
-//
-//        tableReport.print();
+        System.out.println("Welcome to Bialekruki project!");
 
+        InputManager inputManager = new InputManager(args);
+        List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
 
+        for (Project project : projectList) {
+            System.out.println("\nProject:");
+            System.out.println(project);
+        }
+
+        System.out.println("Raport");
+
+        HoursPerProject raport2 = new HoursPerProject();
+        TableReport tableReport = raport2.generate(projectList);
+
+        tableReport.print();
     }
 }
 
