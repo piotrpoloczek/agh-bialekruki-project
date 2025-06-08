@@ -30,7 +30,8 @@ public enum ReportType {
     TOP_10,
 
     /**
-     * Report showing the task only with specified tags
+     * Report showing the task only with specified tags.
+     * Used to filter data based on tags.
      */
     FILTER_BY_TAG;
 
@@ -44,6 +45,7 @@ public enum ReportType {
      *            <li>2 - HOURS_PER_PROJECT</li>
      *            <li>3 - DETAILS_PER_USER</li>
      *            <li>4 - TOP_10</li>
+     *            <li>5 - FILTER_BY_TAG</li>
      *          </ul>
      * @return The corresponding ReportType enum constant, or null if no match is found
      */
