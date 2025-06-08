@@ -22,12 +22,12 @@ public class RaportFactory {
                 generateRaport.setInputData(projectList);
                 raport = generateRaport.generateReport();
                 break;
-            case HOURS_PER_PROJECT:
+            case DETAILS_PER_USER:
                 generateRaport = new ReportHoursPerProjectPercent();
                 generateRaport.setInputData(projectList);
                 raport = generateRaport.generateReport();
                 break;
-            case DETAILS_PER_USER:
+            case HOURS_PER_PROJECT:
                 generateRaport = new ReportDetailsPerUser();
                 generateRaport.setInputData(projectList);
                 raport = generateRaport.generateReport();
