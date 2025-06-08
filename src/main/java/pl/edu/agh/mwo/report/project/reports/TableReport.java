@@ -3,7 +3,6 @@ package pl.edu.agh.mwo.report.project.reports;
 import lombok.Getter;
 import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,5 +25,7 @@ public class TableReport {
         System.out.println("Headers: " + headers);
         values.forEach(System.out::println);
         errors.forEach(System.out::println);
+        ExcelPrinter excelPrinter = new ExcelPrinter();
+        excelPrinter.printReport(headers, values, name);
     }
 }

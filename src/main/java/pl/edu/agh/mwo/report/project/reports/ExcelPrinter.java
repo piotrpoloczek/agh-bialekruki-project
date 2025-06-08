@@ -20,16 +20,6 @@ import java.util.TreeMap;
 @Getter
 public class ExcelPrinter {
 
-    private final List<String> headers;
-    private final List<List<String>> rows;
-    private final String title;
-
-    public ExcelPrinter(String title, List<String> headers, List<List<String>> rows) {
-        this.title = title;
-        this.headers = headers;
-        this.rows = rows;
-    }
-
     public String madePackage() {
         String folderName = "reports";
         File dir = new File(folderName);
@@ -55,17 +45,16 @@ public class ExcelPrinter {
         return now.format(format);
     }
 
-    private void createPackage() throws IOException {
+    private void createPackage(List<String> headers, List<List<String>> rows, String title) throws IOException {
 
         Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet(getTitle());
+        Sheet sheet = workbook.createSheet(title);
         Map<String, Object[]> data = new TreeMap<>();
 
-        List<String> headers = getHeaders();
         data.put("1", headers.toArray(new Object[0]));
 
-        for (int i = 0; i < getRows().size(); i++) {
-            data.put(String.valueOf(i + 2), getRows().get(i).toArray());
+        for (int i = 0; i < rows.size(); i++) {
+            data.put(String.valueOf(i + 2), rows.get(i).toArray());
         }
 
         Set<String> keyset = data.keySet();
@@ -86,16 +75,16 @@ public class ExcelPrinter {
         String folderName = madePackage();
         String currentDate = currentDate();
 
-        FileOutputStream out = new FileOutputStream(folderName + "/" + getTitle() + "_" + currentDate + ".xlsx");
+        FileOutputStream out = new FileOutputStream(folderName + "/" + title + "_" + currentDate + ".xlsx");
         workbook.write(out);
         out.close();
     }
 
-    public void printReportOne() throws IOException {
-        createPackage();
-    }
-
-    public void printReportTwo() throws IOException {
-        createPackage();
+    public void printReport(List<String> headers, List<List<String>> rows, String title)  {
+        try {
+            createPackage(headers, rows, title);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

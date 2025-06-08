@@ -22,6 +22,7 @@ public class Main {
 
         HoursPerProjectPercentReport raport2 = new HoursPerProjectPercentReport();
         TableReport tableReport = raport2.generate(projectList);
+
         tableReport.print();
     }
 }
