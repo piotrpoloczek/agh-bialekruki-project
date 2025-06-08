@@ -35,11 +35,11 @@ public class ReportHoursPerProject implements GenerateRaport {
             List<ErrorFromExcelParser> errorList = project.getErrorFromExcelParserList();
             errors.addAll(errorList);
 
-          
+
             rows.add(Arrays.asList(projectName, hoursStr));
         }
 
-        return new TableReport("Raport 3", headers, rows, errors);
+        return new TableReport("Raport 2", headers, rows, errors);
     }
 
     @Override
