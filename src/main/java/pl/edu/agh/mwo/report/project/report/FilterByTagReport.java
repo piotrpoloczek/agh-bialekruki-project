@@ -37,7 +37,6 @@ public class FilterByTagReport implements GenerateRaport, ParseFilter {
         }
         return new TableReport("Raport 5", headers, rows, errors);
 
-        //TODO Wyświetlić osobę, czynność, datę i liczbę godzin spędzonych
 
     }
 
@@ -56,7 +55,7 @@ public class FilterByTagReport implements GenerateRaport, ParseFilter {
 
     private void fillTheRowsByData(User user, Task task, String[] strings) {
         for (String string : strings) {
-            if (tags.contains(string.toLowerCase())) {
+            if (tags.contains(string.toLowerCase()) || tags.isEmpty()) {
                 rows.add(Arrays.asList(
                         user.getName(),
                         task.getDate().toString(),
