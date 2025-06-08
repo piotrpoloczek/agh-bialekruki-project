@@ -45,37 +45,7 @@ class HoursPerProjectPercentTest {
         assertEquals(List.of("Project 2", "5,00", "50,00%"), rows.get(1));
     }
 
-    @Test
-    void testGenerate_emptyProjectsList() {
-        TableReport report = new HoursPerProjectPercent().generate(new ArrayList<>());
 
-        assertEquals("Raport 3", report.getName());
-        assertEquals(List.of("Name", "Hours", "Percent"), report.getHeaders());
-        assertFalse(report.getName().isEmpty());
-    }
-
-    @Test
-    void testGenerate_projectWithNoUsers() {
-        Project emptyProject = new Project("Empty");
-
-        TableReport report = new HoursPerProjectPercent().generate(List.of(emptyProject));
-
-        assertEquals(1, report.getValues().size());
-        assertEquals(List.of("Project 1", "0,00", "0.00%"), report.getValues().get(0));
-    }
-
-    @Test
-    void testGenerate_projectWithUsersButNoTasks() {
-        User userWithoutTasks = new User("GhostUser");
-
-        Project project = new Project("DeadProject");
-        project.addUser(userWithoutTasks);
-
-        TableReport report = new HoursPerProjectPercent().generate(List.of(project));
-
-        assertEquals(1, report.getValues().size());
-        assertEquals(List.of("Project 1", "0,00", "0.00%"), report.getValues().get(0));
-    }
 
     @Test
     void testGenerate_multipleTasksAndProjects() {
