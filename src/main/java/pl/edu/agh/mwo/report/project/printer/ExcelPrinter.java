@@ -12,10 +12,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 @Getter
 public class ExcelPrinter {
@@ -49,7 +49,7 @@ public class ExcelPrinter {
 
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(title);
-        Map<String, Object[]> data = new TreeMap<>();
+        Map<String, Object[]> data = new LinkedHashMap<>();
 
         data.put("1", headers.toArray(new Object[0]));
 

@@ -16,6 +16,7 @@ public class Project {
     private String name;
     private List<User> userList = new ArrayList<>();
     private List<ErrorFromExcelParser> errorFromExcelParserList = new ArrayList<>();
+    private List<Task> taskList = new ArrayList<>();
 
     public Project(String name) {
         this.name = name;
@@ -23,6 +24,10 @@ public class Project {
 
     public void addUser(User user) {
         userList.add(user);
+    }
+
+    public void addTask(Task task) {
+        taskList.add(task);
     }
 
     public void addErrorFromExcelParser(ErrorFromExcelParser errorFromExcelParser) {
