@@ -4,7 +4,7 @@ import pl.edu.agh.mwo.report.project.model.Project;
 
 import java.util.List;
 
-public class FilterByTagReport implements GenerateRaport {
+public class FilterByTagReport implements GenerateRaport, ParseFilter {
     @Override
     public TableReport generateReport() {
         return null;
@@ -12,6 +12,11 @@ public class FilterByTagReport implements GenerateRaport {
 
     @Override
     public void setInputData(List<Project> projects) {
+
+    }
+
+    @Override
+    public void setFilterData(List<String> tags) {
 
     }
 }

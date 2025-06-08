@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class HoursPerProjectPercentReport implements GenerateRaport {
+public class ReportHoursPerProjectPercent implements GenerateRaport {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours", "Percent");
         List<List<String>> rows = new ArrayList<>();

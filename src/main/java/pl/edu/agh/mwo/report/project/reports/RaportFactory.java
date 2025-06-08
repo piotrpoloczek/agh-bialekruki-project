@@ -2,7 +2,6 @@ package pl.edu.agh.mwo.report.project.reports;
 
 import pl.edu.agh.mwo.report.project.InputManager;
 import pl.edu.agh.mwo.report.project.model.Project;
-
 import java.util.List;
 
 public class RaportFactory {
@@ -17,7 +16,7 @@ public class RaportFactory {
                 raport = generateRaport.generateReport();
                 break;
             case HOURS_PER_PROJECT:
-                generateRaport = new HoursPerProjectPercentReport();
+                generateRaport = new ReportHoursPerProjectPercent();
                 generateRaport.setInputData(projectList);
                 raport = generateRaport.generateReport();
                 break;
@@ -34,6 +33,7 @@ public class RaportFactory {
             case FILTER_BY_TAG:
                 generateRaport = new FilterByTagReport();
                 generateRaport.setInputData(projectList);
+                ((FilterByTagReport) generateRaport).setFilterData(inputManager.getTags());
                 raport = new FilterByTagReport().generateReport();
                 break;
             default:
