@@ -33,8 +33,8 @@ public class ConsolePrinter {
     }
 
     private void printHeader() {
-        System.out.println("Raport: " + title);
-        System.out.println("Data wygenerowania: " + currentDate());
+        System.out.println("Report: " + title);
+        System.out.println("Date: " + currentDate());
         System.out.println();
         for (String header : headers) {
             System.out.printf("%-20s", header);
@@ -60,11 +60,11 @@ public class ConsolePrinter {
             }
 
             if (hasMissing) {
-                System.out.println("\n Brakujące dane w pliku:");
-                System.out.println("Plik: " + fileName);
-                System.out.println("Ścieżka: " + filePath);
-                System.out.println("Projekt: " + projectName);
-                System.out.println("Wiersz: " + rowIndex);
+                System.out.println("\n Lack of data in the file:");
+                System.out.println("File: " + fileName);
+                System.out.println("Path: " + filePath);
+                System.out.println("Project: " + projectName);
+                System.out.println("Row: " + rowIndex);
                 System.out.println();
             } else {
                 System.out.println(rowOutput);
@@ -76,12 +76,12 @@ public class ConsolePrinter {
         if (!dates.isEmpty()) {
             LocalDate min = Collections.min(dates);
             LocalDate max = Collections.max(dates);
-            System.out.println("\nZakres dat: od " + formatDate(min) + " do " + formatDate(max));
+            System.out.println("\nRange of date: from " + formatDate(min) + " to " + formatDate(max));
         }
     }
 
     public void printPercentageReport(Map<String, Integer> projectHours, int totalHours) {
-        System.out.println("\nNazwa projektu         Ilość godzin       Procent [%]");
+        System.out.println("\n Project Name        Hours       Percent [%]");
         for (Map.Entry<String, Integer> entry : projectHours.entrySet()) {
             String project = entry.getKey();
             int hours = entry.getValue();
