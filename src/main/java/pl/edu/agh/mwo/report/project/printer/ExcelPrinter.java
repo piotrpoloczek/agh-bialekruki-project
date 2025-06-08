@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.report.project.reports;
+package pl.edu.agh.mwo.report.project.printer;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

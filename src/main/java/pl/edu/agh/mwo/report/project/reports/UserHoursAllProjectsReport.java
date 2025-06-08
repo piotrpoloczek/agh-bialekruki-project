@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-public class UserHoursAllProjectsReport {
+public class UserHoursAllProjectsReport implements GenerateRaport {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours");
         List<List<String>> rows = new ArrayList<>();
@@ -35,5 +35,10 @@ public class UserHoursAllProjectsReport {
         }
 
         return new TableReport("Raport 1", headers, rows);
+    }
+
+    @Override
+    public TableReport generateReport() {
+        return null;
     }
 }

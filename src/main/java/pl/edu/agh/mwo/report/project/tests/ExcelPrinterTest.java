@@ -2,7 +2,7 @@ package pl.edu.agh.mwo.report.project.tests;
 
 
 import org.junit.Test;
-import pl.edu.agh.mwo.report.project.reports.ExcelPrinter;
+import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
 
 import java.io.IOException;
 import java.util.ArrayList;

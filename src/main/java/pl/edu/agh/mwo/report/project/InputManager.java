@@ -2,7 +2,7 @@ package pl.edu.agh.mwo.report.project;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.edu.agh.mwo.report.project.report.ReportType;
+import pl.edu.agh.mwo.report.project.reports.ReportType;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
