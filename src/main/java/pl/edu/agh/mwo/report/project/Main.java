@@ -1,6 +1,8 @@
 package pl.edu.agh.mwo.report.project;
 
 import pl.edu.agh.mwo.report.project.model.Project;
+import pl.edu.agh.mwo.report.project.reports.HoursPerProjectPercent;
+import pl.edu.agh.mwo.report.project.reports.TableReport;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -23,9 +25,9 @@ public class Main {
 
         System.out.println("Raport");
 
-//        Raport2 raport2 = new Raport2();
-//        TableReport tableReport = raport2.generate(projectList);
-//
-//        tableReport.print();
+        HoursPerProjectPercent raport2 = new HoursPerProjectPercent();
+        TableReport tableReport = raport2.generate(projectList);
+
+        tableReport.print();
     }
 }
