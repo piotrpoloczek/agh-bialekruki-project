@@ -16,7 +16,7 @@ public class RaportFactory {
                 raport = generateRaport.generateReport();
                 break;
             case HOURS_PER_PROJECT:
-                generateRaport = new HoursPerProjectPercentReport();
+                generateRaport = new ReportHoursPerProjectPercent();
                 generateRaport.setInputData(projectList);
                 raport = generateRaport.generateReport();
                 break;
