@@ -16,7 +16,7 @@ public class Main {
         InputManager inputManager = new InputManager(args);
         List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
 
-        TableReport tableReport = RaportFactory.getRaport(inputManager, projectList);
+        TableReport tableReport = RaportFactory.getReport(inputManager, projectList);
         System.out.println(tableReport.getName());
 
         tableReport.print();

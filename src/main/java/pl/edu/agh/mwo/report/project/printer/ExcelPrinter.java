@@ -75,7 +75,7 @@ public class ExcelPrinter {
         String folderName = madePackage();
         String currentDate = currentDate();
 
-        FileOutputStream out = new FileOutputStream(folderName + "/" + title + "_" + currentDate + ".xlsx");
+        FileOutputStream out = new FileOutputStream(folderName + "/" + title + "_" + currentDate + ".xls");
         workbook.write(out);
         out.close();
     }
