@@ -15,7 +15,7 @@ public class ConsolePrinter {
     private final String fileName;
     private final String filePath;
     private final String projectName;
-    final int NumberOneHundred = 100;
+    final int numberOneHundred = 100;
 
     public ConsolePrinter(String title, List<String> headers, List<List<String>> rows,
                           String fileName, String filePath, String projectName) {
@@ -88,7 +88,7 @@ public class ConsolePrinter {
         for (Map.Entry<String, Integer> entry : projectHours.entrySet()) {
             String project = entry.getKey();
             int hours = entry.getValue();
-            double percent = ((double) hours / totalHours) * NumberOneHundred;
+            double percent = ((double) hours / totalHours) * numberOneHundred;
             System.out.printf("%-22s %-18d %.1f\n", project, hours, percent);
         }
     }
