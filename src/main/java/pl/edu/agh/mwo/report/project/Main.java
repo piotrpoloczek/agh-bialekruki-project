@@ -29,6 +29,6 @@ public class Main {
 
 
         // Generate report from. factory
-        TableReport tableReport = RaportFactory.getRaport(inputManager, projectList);
+//        TableReport tableReport = RaportFactory.getRaport(inputManager, projectList);
     }
 }

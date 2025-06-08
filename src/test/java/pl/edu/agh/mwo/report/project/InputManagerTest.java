@@ -1,12 +1,9 @@
 package pl.edu.agh.mwo.report.project;
 
 import org.junit.jupiter.api.Assertions;
-<<<<<<< HEAD
 import pl.edu.agh.mwo.report.project.reports.ReportType;
-=======
 import org.junit.jupiter.api.Test;
-import pl.edu.agh.mwo.report.project.report.ReportType;
->>>>>>> main
+
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -25,6 +25,7 @@ public class InputManager {
     public InputManager(String[] args) {
         parseArgs(args);
         printArguments();
+
     }
 
     private void createAbsolutePathFromData(String data) {
@@ -74,6 +75,10 @@ public class InputManager {
                     }
                     break;
             }
+        }
+
+        if (absolutePath == null) {
+            throw new IllegalArgumentException("Path cannot be null");
         }
     }
 
