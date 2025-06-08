@@ -1,7 +1,6 @@
 package pl.edu.agh.mwo.report.project;
 
 import lombok.Getter;
-import lombok.Setter;
 import pl.edu.agh.mwo.report.project.reports.ReportType;
 
 import java.nio.file.Path;
@@ -10,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Setter
+
 @Getter
 public class InputManager {
 
     private Path absolutePath = null;
     private String date = null;
     private ReportType reportType = null;
-    private List<String> tags = new ArrayList<>();
-    private List<String> labels = new ArrayList<>();
+    private final List<String> tags = new ArrayList<>();
+    private final List<String> labels = new ArrayList<>();
     private boolean export = false;
 
 
