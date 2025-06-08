@@ -12,14 +12,14 @@ Folder główny (rok)
 
         * Struktura Excela:
 
-#### Projekt 1
+#### Projekt przykladowy 1
 
 | Data       | Zadanie                                    | Czas \[h] |
 | ---------- | ------------------------------------------ | --------- |
 | 01.02.2012 | Wizyta u klienta, dopytanie o dane         | 7,25      |
 | 02.02.2012 | Przygotoeanie anomimizatora danych i testy | 6,5       |
 
-#### Projekt 2
+#### Projekt przykladowy 2
 
 | Data       | Zadanie                                                 | Czas \[h] |
 | ---------- | ------------------------------------------------------- | --------- |
@@ -35,22 +35,7 @@ Folder główny (rok)
     * `2024` -> raport z wszystkich podkatalogów
     * `2024/1` -> raport tylko z podkatalogu `1`
 
-### 3. Uruchamianie z filtracją (opcjonalne):
-
-* Po słowie klucz:
-
-    * `2024 -t spotkanie`
-    * `2024/1 -t spotkanie`
-* Po # w Excelu:
-
-    * `2024 -t #abc`
-    * `2024/1 -t #abc`
-* Po datach (priorytet niski):
-
-    * `2024 16-01-2024 25-03-2024`
-    * `2024/01 16-01-2024 25-01-2024`
-
----
+### 3. Uruchamianie z filtracją:
 
 ### 4. Projekt minimum:
 
@@ -77,20 +62,15 @@ Zlicza godziny z zakładek Projekt 1, Projekt 2 itd.
 
 Uwagi:
 
-* Program ma pominąć puste wiersze
-* Brak danych (np. brak daty lub godzin) ma zostać wypisany w konsoli z:
+* Program pomija puste wiersze
+* Brak danych (np. brak daty lub godzin) zostaje wypisany w konsoli z:
 
     * nazwą pliku
     * ścieżką
     * nazwą projektu
     * numerem wiersza
 * Obsługuje tylko format `.xls`
-* Konsola pokazuje zakres dat: np. od 02.03.2024 do 16.03.2024
 * Program nie przeszukuje dysku globalnie
-
----
-
-### 5. Projekt - wymagania średnie:
 
 #### Raport 3: Procent pracy nad projektami
 
@@ -108,7 +88,7 @@ Kamil Kowalski – 10 h
 | Projekt 1      | 8            | 80           |
 | Projekt 2      | 2            | 20           |
 
-#### Raport 4: 10/20 najczęściej wykonywanych czynności
+#### Raport 4: 10 najczęściej wykonywanych czynności
 
 | Czynność                  | Suma godzin \[h] |
 | ------------------------- | ---------------- |
@@ -122,14 +102,7 @@ Kamil Kowalski – 10 h
 | Wizyta u klienta, dopytanie o dane                 | 120              |
 | Wizyta u klienta, przetworzenie i odebranie danych | 340              |
 
----
 
-### 6. Projekt - wymagania MAX:
-
-* Filtrowanie danych od dnia do dnia (data start, data koniec)
-* (opcjonalnie) interfejs graficzny
-
----
 
 ### Testy jednostkowe:
 
@@ -139,4 +112,4 @@ Kamil Kowalski – 10 h
 
 ---
 
-**UWAGA:** Projekt powinien zostać przetestowany na danych z większą liczbą plików, aby upewnić się, że działa dla wszystkich przypadków.
+Projekt został przetestowany na danych z większą liczbą plików, aby upewnić się, że działa dla wszystkich przypadków.
