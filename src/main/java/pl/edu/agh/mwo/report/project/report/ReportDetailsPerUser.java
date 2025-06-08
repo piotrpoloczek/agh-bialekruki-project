@@ -1,6 +1,10 @@
 package pl.edu.agh.mwo.report.project.report;
 
-import pl.edu.agh.mwo.report.project.model.*;
+import pl.edu.agh.mwo.report.project.model.Project;
+import pl.edu.agh.mwo.report.project.model.Task;
+import pl.edu.agh.mwo.report.project.model.TableReport;
+import pl.edu.agh.mwo.report.project.model.User;
+import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
 import pl.edu.agh.mwo.report.project.reports.GenerateRaport;
 
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ public class ReportDetailsPerUser implements GenerateRaport {
     private List<String> headers = Arrays.asList("User name", "Project", "Time spent", "Percentage");
     private List<List<String>> rows = new ArrayList<>();
     private List<ErrorFromExcelParser> errors = new ArrayList<>();
+
     @Override
     public TableReport generateReport() {
 
