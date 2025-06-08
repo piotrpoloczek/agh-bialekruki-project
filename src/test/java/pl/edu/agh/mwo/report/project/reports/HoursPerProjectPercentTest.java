@@ -1,16 +1,16 @@
-package pl.edu.agh.mwo.report.project.reports;
-
-import org.junit.jupiter.api.Test;
-import pl.edu.agh.mwo.report.project.model.Project;
-import pl.edu.agh.mwo.report.project.model.Task;
-import pl.edu.agh.mwo.report.project.model.User;
-
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class ReportHoursPerProjectPercent {
-
+//package pl.edu.agh.mwo.report.project.reports;
+//
+//import org.junit.jupiter.api.Test;
+//import pl.edu.agh.mwo.report.project.model.Project;
+//import pl.edu.agh.mwo.report.project.model.Task;
+//import pl.edu.agh.mwo.report.project.model.User;
+//
+//import java.util.*;
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//
+//class HoursPerProjectPercentTest {
+//
 //    @Test
 //    void testGenerate_twoProjectsWithEqualTime() {
 //
@@ -32,7 +32,7 @@ class ReportHoursPerProjectPercent {
 //        List<Project> projects = List.of(project1, project2);
 //
 //
-//        TableReport report = new ReportHoursPerProjectPercent().generate(projects);
+//        TableReport report = new HoursPerProjectPercent().generate(projects);
 //
 //
 //        assertEquals("Raport 3", report.getName());
@@ -66,7 +66,7 @@ class ReportHoursPerProjectPercent {
 //        Project p2 = new Project("Beta");
 //        p2.addUser(u2);
 //
-//        TableReport report = new ReportHoursPerProjectPercent().generate(List.of(p1, p2));
+//        TableReport report = new HoursPerProjectPercent().generate(List.of(p1, p2));
 //
 //        List<List<String>> rows = report.getValues();
 //
@@ -74,4 +74,4 @@ class ReportHoursPerProjectPercent {
 //        assertEquals(List.of("Project 1", "5,00", "50,00%"), rows.get(0));
 //        assertEquals(List.of("Project 2", "5,00", "50,00%"), rows.get(1));
 //    }
-}
+//}

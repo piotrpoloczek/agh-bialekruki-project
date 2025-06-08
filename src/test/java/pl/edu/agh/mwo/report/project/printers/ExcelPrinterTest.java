@@ -1,9 +1,7 @@
 package pl.edu.agh.mwo.report.project.printers;
 
-
 import org.junit.Test;
 import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
-
 import java.util.ArrayList;
 import java.util.List;
 
