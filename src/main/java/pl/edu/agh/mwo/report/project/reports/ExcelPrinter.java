@@ -1,20 +1,10 @@
 package pl.edu.agh.mwo.report.project.reports;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class ExcelPrinter {
 
@@ -65,47 +55,4 @@ public class ExcelPrinter {
         return now.format(format);
     }
 
-    private void createPackage() throws IOException {
-//
-//        Workbook workbook = new Workbook();
-//        Sheet sheet = workbook.createSheet(getTitle());
-//        Map<String, Object[]> data = new TreeMap<String, Object[]>();
-//
-//        List<String> headers = getHeaders();
-//        data.put("1", headers.toArray(new Object[0]));
-//
-//        for (int i = 0; i < getRows().size(); i++) {
-//            data.put(String.valueOf(i + 2), getRows().get(i).toArray());
-//        }
-//
-//        Set<String> keyset = data.keySet();
-//        int rownum = 0;
-//        for (String key : keyset) {
-//            Row row = sheet.createRow(rownum++);
-//            Object[] objArr = data.get(key);
-//            int cellnum = 0;
-//            for (Object obj : objArr) {
-//                Cell cell = row.createCell(cellnum++);
-//                if (obj instanceof String) {
-//                    cell.setCellValue((String) obj);
-//                } else if (obj instanceof Integer) {
-//                    cell.setCellValue((Integer) obj);
-//                }
-//            }
-//        }
-//        String folderName = madePackage();
-//        String currentDate = currentDate();
-//
-//        FileOutputStream out = new FileOutputStream(folderName + "/" + getTitle() + "_" + currentDate + ".xlsx");
-//        workbook.write(out);
-//        out.close();
-//    }
-//
-//    public void printReportOne() throws IOException {
-//        createPackage();
-//    }
-//
-//    public void printReportTwo() throws IOException {
-//        createPackage();
-    }
 }

@@ -30,10 +30,11 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" +
-                "name='" + name + '\'' +
-                ", userList=" + userList +
-                ", errorFromExcelParserList=" + errorFromExcelParserList +
-                '}';
+        return "Project{"
+                + "name='" + name + '\''
+                + ", userList=" + userList
+                + ", errorFromExcelParserList="
+                + errorFromExcelParserList
+                + '}';
     }
 }

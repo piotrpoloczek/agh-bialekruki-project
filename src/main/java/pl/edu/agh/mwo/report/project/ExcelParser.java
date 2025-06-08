@@ -58,10 +58,13 @@ public class ExcelParser {
                 goByRow(path, sheet, file, project, user);
                 projects.add(project);
             } else {
-                Project projectFound = projects.stream().filter(project -> project.getName().equals(sheet.getSheetName())).findFirst().orElseThrow();
+                Project projectFound = projects.stream().filter(
+                        project -> project.getName().equals(sheet.getSheetName()))
+                        .findFirst()
+                        .orElseThrow();
                 User user = new User(nameWithoutExtension);
                 projectFound.addUser(user);
-                goByRow(path, sheet, file, projectFound,user);
+                goByRow(path, sheet, file, projectFound, user);
             }
         }
     }

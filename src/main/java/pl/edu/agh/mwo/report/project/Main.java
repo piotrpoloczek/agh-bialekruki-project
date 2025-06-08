@@ -2,12 +2,10 @@ package pl.edu.agh.mwo.report.project;
 
 
 import pl.edu.agh.mwo.report.project.model.Project;
-//import pl.edu.agh.mwo.report.project.reports.Raport2;
 import pl.edu.agh.mwo.report.project.reports.HoursPerProjectPercentReport;
 import pl.edu.agh.mwo.report.project.reports.TableReport;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 
@@ -20,11 +18,10 @@ public class Main {
         InputManager inputManager = new InputManager(args);
         List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
 
-
         System.out.println("Raport");
 
-          HoursPerProjectPercentReport raport2 = new HoursPerProjectPercentReport();
-          TableReport tableReport = raport2.generate(projectList);
-          tableReport.print();
+        HoursPerProjectPercentReport raport2 = new HoursPerProjectPercentReport();
+        TableReport tableReport = raport2.generate(projectList);
+        tableReport.print();
     }
 }
