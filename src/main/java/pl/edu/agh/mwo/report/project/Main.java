@@ -26,9 +26,9 @@ public class Main {
 
         System.out.println("Raport");
 
-        Raport2 raport2 = new Raport2();
-        TableReport tableReport = raport2.generate(projectList);
-
-        tableReport.print();
+//        Raport2 raport2 = new Raport2();
+//        TableReport tableReport = raport2.generate(projectList);
+//
+//        tableReport.print();
     }
 }
