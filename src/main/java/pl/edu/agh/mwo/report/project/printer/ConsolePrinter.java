@@ -40,6 +40,7 @@ public class ConsolePrinter {
         System.out.println();
         printRows();
     }
+
     public void printRows() {
         for (List<String> row : rows) {
             for (String cell : row) {
