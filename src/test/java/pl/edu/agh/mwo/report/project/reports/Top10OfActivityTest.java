@@ -5,7 +5,7 @@ import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.TableReport;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
-import pl.edu.agh.mwo.report.project.report.Top10Report;
+import pl.edu.agh.mwo.report.project.report.ReportTop10;
 
 import java.util.Date;
 import java.util.List;
@@ -58,7 +58,7 @@ public class Top10OfActivityTest {
         project2.addTask(task3);
 
         List<Project> projects = List.of(project1, project2);
-        TableReport report = new Top10Report().generate(projects);
+        TableReport report = new ReportTop10().generate(projects);
 
         report.print();
 

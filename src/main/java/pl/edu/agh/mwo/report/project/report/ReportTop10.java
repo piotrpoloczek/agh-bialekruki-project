@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-public class Top10Report implements GenerateRaport {
+public class ReportTop10 implements GenerateRaport {
     private final int maxTopValue = 10;
 
     public TableReport generate(List<Project> projects) {
