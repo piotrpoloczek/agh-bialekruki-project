@@ -1,7 +1,10 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
 public class TableReport {
 
     private String name;
@@ -14,20 +17,11 @@ public class TableReport {
         this.values = values;
     }
 
+    public void print() {
+        System.out.println(name);
+        System.out.println("Headers: " + headers);
+        System.out.println("Values: " + values);
 
-    public String getName() {
-        return name;
-    }
-
-
-    public List<String> getHeaders() {
-        return headers;
-    }
-
-
-    public List<List<String>> getValues() {
-        return values;
+        values.forEach(System.out::println);
     }
 }
-
-
