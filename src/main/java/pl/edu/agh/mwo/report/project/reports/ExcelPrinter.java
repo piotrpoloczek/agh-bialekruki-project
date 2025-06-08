@@ -1,11 +1,12 @@
 package pl.edu.agh.mwo.report.project.reports;
 
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -70,8 +71,8 @@ public class ExcelPrinter {
         String folderName = madePackage();
         String currentDate = currentDate();
 
-        XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet(getTitle());
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet(getTitle());
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
 
         List<String> headers = getHeaders();
@@ -85,11 +86,11 @@ public class ExcelPrinter {
         Set<String> keyset = data.keySet();
         int rownum = 0;
         for (String key : keyset) {
-            XSSFRow row = sheet.createRow(rownum++);
+            Row row = sheet.createRow(rownum++);
             Object[] objArr = data.get(key);
             int cellnum = 0;
             for (Object obj : objArr) {
-                XSSFCell cell = row.createCell(cellnum++);
+                Cell cell = row.createCell(cellnum++);
                 if (obj instanceof String)
                     cell.setCellValue((String)obj);
                 else if (obj instanceof Integer)
