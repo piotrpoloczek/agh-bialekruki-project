@@ -1,7 +1,5 @@
 package pl.edu.agh.mwo.report.project.reports;
 
-
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -20,9 +18,10 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class ExcelPrinter {
-    private final String title;
+
     private final List<String> headers;
     private final List<List<String>> rows;
+    private final String title;
 
     public ExcelPrinter(String title, List<String> headers, List<List<String>> rows) {
         this.title = title;
@@ -59,7 +58,7 @@ public class ExcelPrinter {
         return folderName;
     }
 
-    public String currentDate(){
+    public String currentDate() {
         LocalDateTime now = LocalDateTime.now();
         System.out.println("Bieżąca data i godzina: " + now);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
@@ -68,8 +67,6 @@ public class ExcelPrinter {
     }
 
     private void createPackage() throws IOException {
-        String folderName = madePackage();
-        String currentDate = currentDate();
 
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(getTitle());
@@ -79,9 +76,8 @@ public class ExcelPrinter {
         data.put("1", headers.toArray(new Object[0]));
 
         for (int i = 0; i < getRows().size(); i++) {
-            data.put(String.valueOf(i+2), getRows().get(i).toArray());
+            data.put(String.valueOf(i + 2), getRows().get(i).toArray());
         }
-
 
         Set<String> keyset = data.keySet();
         int rownum = 0;
@@ -91,13 +87,17 @@ public class ExcelPrinter {
             int cellnum = 0;
             for (Object obj : objArr) {
                 Cell cell = row.createCell(cellnum++);
-                if (obj instanceof String)
-                    cell.setCellValue((String)obj);
-                else if (obj instanceof Integer)
-                    cell.setCellValue((Integer)obj);
+                if (obj instanceof String) {
+                    cell.setCellValue((String) obj);
+                } else if (obj instanceof Integer) {
+                    cell.setCellValue((Integer) obj);
+                }
             }
         }
-        FileOutputStream out = new FileOutputStream(folderName+"/"+getTitle() +"_"+ currentDate + ".xlsx");
+        String folderName = madePackage();
+        String currentDate = currentDate();
+
+        FileOutputStream out = new FileOutputStream(folderName + "/" + getTitle() + "_" + currentDate + ".xlsx");
         workbook.write(out);
         out.close();
     }
