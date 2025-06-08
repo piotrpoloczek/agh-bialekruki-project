@@ -7,9 +7,10 @@ import lombok.RequiredArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Getter
 public class Project {
 
     private String name;

@@ -1,16 +1,22 @@
-package pl.edu.agh.mwo.report.project.reports;
+package pl.edu.agh.mwo.report.project.report;
 
 import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
+import pl.edu.agh.mwo.report.project.reports.GenerateRaport;
+import pl.edu.agh.mwo.report.project.model.TableReport;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ReportHoursPerProjectPercent implements GenerateRaport {
-    public TableReport generate(List<Project> projects) {
+
+    private List<Project> projects;
+
+    @Override
+    public TableReport generateReport() {
         List<String> headers = Arrays.asList("Name", "Hours", "Percent");
         List<List<String>> rows = new ArrayList<>();
         List<ErrorFromExcelParser> errors = new ArrayList<>();
@@ -51,12 +57,7 @@ public class ReportHoursPerProjectPercent implements GenerateRaport {
     }
 
     @Override
-    public TableReport generateReport() {
-        return null;
-    }
-
-    @Override
     public void setInputData(List<Project> projects) {
-
+        this.projects = projects;
     }
 }

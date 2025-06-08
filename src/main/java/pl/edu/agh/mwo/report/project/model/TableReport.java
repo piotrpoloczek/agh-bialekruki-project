@@ -1,8 +1,7 @@
-package pl.edu.agh.mwo.report.project.reports;
+package pl.edu.agh.mwo.report.project.model;
 
 import lombok.Getter;
-import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
-import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
+//import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
 
 import java.util.List;
 
@@ -26,7 +25,5 @@ public class TableReport {
         System.out.println("Headers: " + headers);
         values.forEach(System.out::println);
         errors.forEach(System.out::println);
-        ExcelPrinter excelPrinter = new ExcelPrinter();
-        excelPrinter.printReport(headers, values, name);
     }
 }

@@ -1,10 +1,13 @@
-package pl.edu.agh.mwo.report.project.reports;
+package pl.edu.agh.mwo.report.project.report;
 
 import pl.edu.agh.mwo.report.project.model.Project;
+import pl.edu.agh.mwo.report.project.reports.GenerateRaport;
+import pl.edu.agh.mwo.report.project.reports.ParseFilter;
+import pl.edu.agh.mwo.report.project.model.TableReport;
 
 import java.util.List;
 
-public class FilterByTagReport implements GenerateRaport, ParseFilter {
+public class ReportFilterByTag implements GenerateRaport, ParseFilter {
     @Override
     public TableReport generateReport() {
         return null;
