@@ -2,7 +2,7 @@ package pl.edu.agh.mwo.report.project;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.edu.agh.mwo.report.project.report.ReportType;
+import pl.edu.agh.mwo.report.project.reports.ReportType;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,6 +25,7 @@ public class InputManager {
     public InputManager(String[] args) {
         parseArgs(args);
         printArguments();
+
     }
 
     private void createAbsolutePathFromData(String data) {
@@ -74,6 +75,10 @@ public class InputManager {
                     }
                     break;
             }
+        }
+
+        if (absolutePath == null) {
+            throw new IllegalArgumentException("Path cannot be null");
         }
     }
 

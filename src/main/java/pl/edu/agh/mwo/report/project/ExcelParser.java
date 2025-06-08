@@ -4,19 +4,21 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 public class ExcelParser {
 
@@ -24,42 +26,81 @@ public class ExcelParser {
         List<Path> paths = listOfAllPathsToExcels(givenPath);
         List<Project> projects = new ArrayList<>();
 
-        paths.stream()
-                .forEach(path -> {
-                    try (FileInputStream fileInputStream = new FileInputStream(path.toString());
-                         Workbook workbook = WorkbookFactory.create(fileInputStream)) {
-                        int numberOfSheets = workbook.getNumberOfSheets();
-                        createProjectsFromSelectedPath(path, numberOfSheets, workbook, projects);
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+        paths.forEach(path -> {
+            try (FileInputStream fileInputStream = new FileInputStream(path.toString());
+                 Workbook workbook = WorkbookFactory.create(fileInputStream)) {
+                int numberOfSheets = workbook.getNumberOfSheets();
+                createProjectsFromSelectedPath(path, numberOfSheets, workbook, projects);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         return projects;
     }
 
-    private static void createProjectsFromSelectedPath(Path path, int numberOfSheets, Workbook workbook, List<Project> projects) {
+    private static void createProjectsFromSelectedPath(
+            Path path,
+            int numberOfSheets,
+            Workbook workbook,
+            List<Project> projects
+    ) {
         for (int i = 0; i < numberOfSheets; i++) {
-            Project project = new Project(workbook.getSheetName(i));
             Sheet sheet = workbook.getSheetAt(i);
             File file = new File(String.valueOf(path));
             String nameWithoutExtension = convertNameWithoutExtension(file.getName());
-            User user = new User(nameWithoutExtension);
-            project.addUser(user);
+            boolean anyMatch = projects.stream().anyMatch(project -> project.getName().equals(sheet.getSheetName()));
+            if (!anyMatch) {
+                Project project = new Project(workbook.getSheetName(i));
+                User user = new User(nameWithoutExtension);
+                project.addUser(user);
+                goByRow(path, sheet, file, project, user);
+                projects.add(project);
+            } else {
+                Project projectFound = projects.stream().filter(
+                        project -> project.getName().equals(sheet.getSheetName()))
+                        .findFirst()
+                        .orElseThrow();
+                User user = new User(nameWithoutExtension);
+                projectFound.addUser(user);
+                goByRow(path, sheet, file, projectFound, user);
+            }
+        }
+    }
 
-            for (Row row : sheet) {
-                if (row.getRowNum() > 0) {
-                    Task task = new Task(
-                            row.getCell(0).getDateCellValue(),
-                            row.getCell(1).getStringCellValue(),
-                            Float.parseFloat(String.valueOf(row.getCell(2).getNumericCellValue())));
+    private static void goByRow(Path path, Sheet sheet, File file, Project project, User user) {
+        for (Row row : sheet) {
+            if (row.getRowNum() > 0) {
+                Task task = new Task();
+                try {
+                    Date dateCellValue = row.getCell(0).getDateCellValue();
+                    String stringCellValue = row.getCell(1).getStringCellValue();
+                    float parseFloat = Float.parseFloat(String.valueOf(row.getCell(2).getNumericCellValue()));
+                    if (dateCellValue != null
+                            && stringCellValue != null
+                            && !stringCellValue.isEmpty()
+                            && !stringCellValue.equalsIgnoreCase("null")
+                            && parseFloat >= 0.0
+                    ) {
+                        task.setDate(dateCellValue);
+                        task.setName(stringCellValue);
+                        task.setTimeSpentOnTheTask(parseFloat);
+                    } else {
+                        project.addErrorFromExcelParser(new ErrorFromExcelParser(
+                                path.toString(),
+                                file.getName(),
+                                row.getRowNum())
+                        );
+                    }
                     user.addTask(task);
+                } catch (Exception e) {
+                    project.addErrorFromExcelParser(new ErrorFromExcelParser(
+                            path.toString(),
+                            file.getName(),
+                            row.getRowNum())
+                    );
                 }
             }
-
-            projects.add(project);
         }
     }
 
