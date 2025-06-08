@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.report.project.tests;
+package pl.edu.agh.mwo.report.project.printers;
 
 
 import org.junit.Test;
