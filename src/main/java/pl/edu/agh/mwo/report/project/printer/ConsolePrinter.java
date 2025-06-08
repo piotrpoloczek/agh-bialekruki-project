@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.report.project.printer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConsolePrinter {
@@ -29,7 +30,7 @@ public class ConsolePrinter {
         return now.format(format);
     }
 
-    private void printHeader() {
+    public void printHeader() {
         System.out.println("Report: " + title);
         System.out.println("Date: " + currentDate());
         System.out.println();
@@ -37,5 +38,14 @@ public class ConsolePrinter {
             System.out.printf("%-20s", header);
         }
         System.out.println();
+        printRows();
+    }
+    public void printRows() {
+        for (List<String> row : rows) {
+            for (String cell : row) {
+                System.out.printf("%-20s", cell);
+            }
+            System.out.println();
+        }
     }
 }
