@@ -1,5 +1,6 @@
 package pl.edu.agh.mwo.report.project;
 
+
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.reports.HoursPerProjectPercent;
 import pl.edu.agh.mwo.report.project.reports.TableReport;
@@ -25,8 +26,8 @@ public class Main {
 
         System.out.println("Raport");
 
-        HoursPerProjectPercent raport3 = new HoursPerProjectPercent();
-        TableReport tableReport = raport3.generate(projectList);
+        Raport2 raport2 = new Raport2();
+        TableReport tableReport = raport2.generate(projectList);
 
         tableReport.print();
     }
