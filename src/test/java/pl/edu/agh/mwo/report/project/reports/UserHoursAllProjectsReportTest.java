@@ -1,10 +1,16 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pl.edu.agh.mwo.report.project.ExcelParser;
+import pl.edu.agh.mwo.report.project.InputManager;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
 import pl.edu.agh.mwo.report.project.model.Project;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,167 +19,66 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserHoursAllProjectsReportTest {
 
+    String params1 = "dane/2012";
+    String params2 = "-r";
+    String params_raport_users_hours_all_projects = "1";
+    String params_raport_hours_per_project = "2";
+    String params_raport_details_per_user = "3";
+    String params_raport_top_10 = "4";
+    String params_raport_filter_by_tag = "5";
+    String params3 = "1";
+    String params4 = "-t";
+    String params5 = "tag1";
+    String params6 = "tag2";
+    String params7 = "-l";
+    String params8 = "label1";
+    String params9 = "label2";
+    String params10 = "-e";
+
+@Test
+public void testEmployeeCount() throws IOException {
+
+    String[] args = new String[1];
+    args[0] = params1;
+    InputManager inputManager = new InputManager(args);
+    Path inputManagerPath = inputManager.getAbsolutePath();
+    List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManagerPath);
+
+    TableReport report = new UserHoursAllProjectsReport().generate(projectList);
+    List<List<String>> rows = report.getValues();
+    assertEquals(9, rows.size());
+
+}
 
     @Test
-    public void notNullReportTest() {
-        Task task1 = new Task(new Date(), "Task 1", 10);
-        Task task2 = new Task(new Date(), "Task 2", 10);
+    public void testSingleUser() throws IOException {
 
-        User user1 = new User("Kasia");
-        user1.addTask(task1);
+        String[] args = new String[1];
+        args[0] = params1;
+        InputManager inputManager = new InputManager(args);
+        Path inputManagerPath = inputManager.getAbsolutePath();
+        List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManagerPath);
 
-        User user2 = new User("Kacper");
-        user2.addTask(task2);
-
-        Project project1 = new Project("Projekt pierwszy");
-        project1.addUser(user1);
-
-        Project project2 = new Project("Projekt drugi");
-        project2.addUser(user2);
-
-        List<Project> projects = List.of(project1, project2);
-        TableReport report = new UserHoursAllProjectsReport().generate(projects);
-        assertNotNull(report);
-
-    }
-
-    @Test
-
-    public void UserHoursSumWithOneUserOneProjectTest() {
-        Task task1 = new Task(new Date(), "Task 1", 10);
-        Task task2 = new Task(new Date(), "Task 2", 10);
-
-        User user1 = new User("Kasia");
-        user1.addTask(task1);
-        user1.addTask(task2);
-
-
-        Project project1 = new Project("Projekt pierwszy");
-        project1.addUser(user1);
-
-        List<Project> projects = List.of(project1);
-
-        TableReport report = new UserHoursAllProjectsReport().generate(projects);
-
-        assertEquals("Raport 1", report.getName());
-        assertEquals(List.of("Name", "Hours"), report.getHeaders());
-
+        TableReport report = new UserHoursAllProjectsReport().generate(projectList);
         List<List<String>> rows = report.getValues();
-        assertEquals(1, rows.size());
-
-        assertEquals(List.of("Kasia", "20.00"), rows.getFirst());
+        assertEquals(9, rows.size());
+        assertEquals(List.of("Filip Sara", "57.00"), rows.getFirst());
     }
-
     @Test
-    public void UserHoursSumWithOneUserCoupleProjectsTest() {
-        Task task1 = new Task(new Date(), "Task 1", 10);
-        Task task2 = new Task(new Date(), "Task 2", 20);
+    public void testMultiUser() throws IOException {
 
 
-        User user1 = new User("Kasia");
-        User user2 = new User("Kasia");
-        user1.addTask(task1);
-        user1.addTask(task2);
-        user2.addTask(task2);
+        String[] args = new String[1];
+        args[0] = params1;
+        InputManager inputManager = new InputManager(args);
+        Path inputManagerPath = inputManager.getAbsolutePath();
+        List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManagerPath);
 
-
-        Project project1 = new Project("Projekt pierwszy");
-        Project project2 = new Project("Projekt drugi");
-
-        project1.addUser(user1);
-        project2.addUser(user2);
-
-        List<Project> projects = List.of(project1, project2);
-
-        TableReport report = new UserHoursAllProjectsReport().generate(projects);
-
-        assertEquals("Raport 1", report.getName());
-        assertEquals(List.of("Name", "Hours"), report.getHeaders());
-
+        TableReport report = new UserHoursAllProjectsReport().generate(projectList);
         List<List<String>> rows = report.getValues();
-        assertEquals(1, rows.size());
-
-        assertEquals(List.of("Kasia", "50.00"), rows.getFirst());
+        assertEquals(9, rows.size());
+        assertEquals(List.of("Kowalski Jan", "111.00"), rows.get(5));
     }
-
-    @Test
-    public void TwoUsersWithOneTaskTest() {
-        Task task1 = new Task(new Date(), "Task 1", 10);
-
-
-        User user1 = new User("Kasia");
-        User user2 = new User("Bartek");
-        user1.addTask(task1);
-        user2.addTask(task1);
-
-        Project project1 = new Project("Projekt pierwszy");
-
-
-        project1.addUser(user1);
-        project1.addUser(user2);
-
-        List<Project> projects = List.of(project1);
-
-        TableReport report = new UserHoursAllProjectsReport().generate(projects);
-
-        assertEquals("Raport 1", report.getName());
-        assertEquals(List.of("Name", "Hours"), report.getHeaders());
-
-        List<List<String>> rows = report.getValues();
-        assertEquals(2, rows.size());
-
-        assertEquals(List.of("Kasia", "10.00"), rows.getFirst());
-        assertEquals(List.of("Bartek", "10.00"), rows.getLast());
-    }
-
-
-    @Test
-    public void MultipleUsersWithMultipleProjectsAndTaskTest() {
-        Task task1 = new Task(new Date(), "Task 1", 10);
-        Task task2 = new Task(new Date(), "Task 2", 20);
-        Task task3 = new Task(new Date(), "Task 3", 30);
-
-
-        User user1 = new User("Kasia");
-        User user2 = new User("Bartek");
-        User user3 = new User("Zosia");
-        User user4 = new User("Bartek");
-        user1.addTask(task1);
-        user1.addTask(task3);
-        user2.addTask(task1);
-        user3.addTask(task3);
-        user4.addTask(task2);
-
-
-        Project project1 = new Project("Projekt pierwszy");
-        Project project2 = new Project("Projekt drugi");
-        Project project3 = new Project("Projekt trzeci");
-        Project project4 = new Project("Projekt czwarty");
-
-
-        project1.addUser(user1);
-        project1.addUser(user2);
-        project2.addUser(user3);
-        project2.addUser(user4);
-        project3.addUser(user4);
-        project4.addUser(user1);
-
-        List<Project> projects = List.of(project1, project2, project3, project4);
-
-        TableReport report = new UserHoursAllProjectsReport().generate(projects);
-
-        assertEquals("Raport 1", report.getName());
-        assertEquals(List.of("Name", "Hours"), report.getHeaders());
-
-        List<List<String>> rows = report.getValues();
-        assertEquals(3, rows.size());
-
-        assertEquals(List.of("Kasia", "80.00"), rows.getFirst());
-        assertEquals(List.of("Bartek", "50.00"), rows.get(1));
-        assertEquals(List.of("Zosia", "30.00"), rows.get(2));
-
-    }
-
 
 
 }
