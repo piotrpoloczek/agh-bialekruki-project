@@ -15,6 +15,7 @@ public class ConsolePrinter {
     private final String fileName;
     private final String filePath;
     private final String projectName;
+    final int NumberOneHundred = 100;
 
     public ConsolePrinter(String title, List<String> headers, List<List<String>> rows,
                           String fileName, String filePath, String projectName) {
@@ -48,7 +49,9 @@ public class ConsolePrinter {
         List<LocalDate> dates = new ArrayList<>();
 
         for (List<String> row : rows) {
-            if (isEmptyRow(row)) continue;
+            if (isEmptyRow(row)) {
+                continue;
+            }
 
             boolean hasMissing = false;
             StringBuilder rowOutput = new StringBuilder();
@@ -85,7 +88,7 @@ public class ConsolePrinter {
         for (Map.Entry<String, Integer> entry : projectHours.entrySet()) {
             String project = entry.getKey();
             int hours = entry.getValue();
-            double percent = ((double) hours / totalHours) * 100;
+            double percent = ((double) hours / totalHours) * NumberOneHundred;
             System.out.printf("%-22s %-18d %.1f\n", project, hours, percent);
         }
     }
@@ -102,7 +105,7 @@ public class ConsolePrinter {
                 dates.add(date);
                 break;
             } catch (Exception ignored) {
-
+                // intentionally ignored: not a valid date
             }
         }
     }
