@@ -58,7 +58,7 @@ public class ExcelParser {
                 projects.add(project);
             } else {
                 Project projectFound = projects.stream().filter(
-                        project -> project.getName().equals(sheet.getSheetName()))
+                                project -> project.getName().equals(sheet.getSheetName()))
                         .findFirst()
                         .orElseThrow();
                 User user = new User(nameWithoutExtension);

@@ -3,7 +3,12 @@ package pl.edu.agh.mwo.report.project.reports;
 import pl.edu.agh.mwo.report.project.InputManager;
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.TableReport;
-import pl.edu.agh.mwo.report.project.report.*;
+import pl.edu.agh.mwo.report.project.report.ReportDetailsPerUser;
+import pl.edu.agh.mwo.report.project.report.ReportFilterByTag;
+import pl.edu.agh.mwo.report.project.report.ReportHoursPerProjectPercent;
+import pl.edu.agh.mwo.report.project.report.ReportUserHoursAllProjects;
+import pl.edu.agh.mwo.report.project.report.ReportTop10;
+
 
 import java.util.List;
 
