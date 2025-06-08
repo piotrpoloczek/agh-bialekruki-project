@@ -1,5 +1,6 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
@@ -14,6 +15,7 @@ public class UserHoursAllProjectsReport {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours");
         List<List<String>> rows = new ArrayList<>();
+        List<ErrorFromExcelParser> errors = new ArrayList<>();
 
         Map<String, Double> userHours = new HashMap<>();
 
@@ -23,9 +25,9 @@ public class UserHoursAllProjectsReport {
                 for (Task task : user.getTaskList()) {
                     totalHours += task.getTimeSpentOnTheTask();
                 }
-
+                List<ErrorFromExcelParser> errorList = project.getErrorFromExcelParserList();
+                errors.addAll(errorList);
                 String userName = user.getName();
-
                 userHours.put(userName, userHours.getOrDefault(userName, 0.0) + totalHours);
             }
         }
@@ -34,6 +36,6 @@ public class UserHoursAllProjectsReport {
             rows.add(Arrays.asList(entry.getKey(), String.format("%.2f", entry.getValue())));
         }
 
-        return new TableReport("Raport 1", headers, rows);
+        return new TableReport("Raport 1", headers, rows, errors);
     }
 }

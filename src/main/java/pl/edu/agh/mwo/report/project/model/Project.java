@@ -14,6 +14,7 @@ public class Project {
 
     private String name;
     private List<User> userList = new ArrayList<>();
+    private List<ErrorFromExcelParser> errorFromExcelParserList = new ArrayList<>();
 
     public Project(String name) {
         this.name = name;
@@ -23,12 +24,16 @@ public class Project {
         userList.add(user);
     }
 
+    public void addErrorFromExcelParser(ErrorFromExcelParser errorFromExcelParser) {
+        errorFromExcelParserList.add(errorFromExcelParser);
+    }
+
     @Override
     public String toString() {
-        return "Project{"
-                + "name='" + name + '\''
-                + ", userList="
-                + userList
-                + '}';
+        return "Project{" +
+                "name='" + name + '\'' +
+                ", userList=" + userList +
+                ", errorFromExcelParserList=" + errorFromExcelParserList +
+                '}';
     }
 }
