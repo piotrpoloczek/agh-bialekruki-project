@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class HoursPerProjectPercentReport {
+public class HoursPerProjectPercentReport implements GenerateRaport {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours", "Percent");
         List<List<String>> rows = new ArrayList<>();
@@ -48,5 +48,15 @@ public class HoursPerProjectPercentReport {
         }
 
         return new TableReport("Raport 3", headers, rows, errors);
+    }
+
+    @Override
+    public TableReport generateReport() {
+        return null;
+    }
+
+    @Override
+    public void setInputData(List<Project> projects) {
+
     }
 }

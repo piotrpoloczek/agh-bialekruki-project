@@ -2,7 +2,8 @@ package pl.edu.agh.mwo.report.project;
 
 
 import pl.edu.agh.mwo.report.project.model.Project;
-import pl.edu.agh.mwo.report.project.reports.HoursPerProjectPercentReport;
+import pl.edu.agh.mwo.report.project.reports.RaportFactory;
+import pl.edu.agh.mwo.report.project.reports.ReportType;
 import pl.edu.agh.mwo.report.project.reports.TableReport;
 
 import java.io.IOException;
@@ -18,11 +19,16 @@ public class Main {
         InputManager inputManager = new InputManager(args);
         List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
 
-        System.out.println("Raport");
 
-        HoursPerProjectPercentReport raport2 = new HoursPerProjectPercentReport();
-        TableReport tableReport = raport2.generate(projectList);
+        for (Project project : projectList) {
+            System.out.println("\nProject:");
+            System.out.println(project);
+        }
 
-        tableReport.print();
+        ReportType reportType = inputManager.getReportType();
+
+
+        // Generate report from. factory
+        TableReport tableReport = RaportFactory.getRaport(inputManager, projectList);
     }
 }

@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.report.project.reports;
 
 import lombok.Getter;
 import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
+import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
 
 import java.util.List;
 
