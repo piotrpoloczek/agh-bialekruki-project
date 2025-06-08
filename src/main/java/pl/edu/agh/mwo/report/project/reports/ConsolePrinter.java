@@ -101,7 +101,9 @@ public class ConsolePrinter {
                 LocalDate date = LocalDate.parse(cell, formatter);
                 dates.add(date);
                 break;
-            } catch (Exception ignored) { }
+            } catch (Exception ignored) {
+
+            }
         }
     }
 
