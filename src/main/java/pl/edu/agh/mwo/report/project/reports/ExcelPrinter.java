@@ -19,9 +19,9 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class ExcelPrinter {
-    private String title;
-    private List<String> headers;
-    private List<List<String>> rows;
+    private final String title;
+    private final List<String> headers;
+    private final List<List<String>> rows;
 
     public ExcelPrinter(String title, List<String> headers, List<List<String>> rows) {
         this.title = title;
@@ -61,7 +61,7 @@ public class ExcelPrinter {
     public String currentDate(){
         LocalDateTime now = LocalDateTime.now();
         System.out.println("Bieżąca data i godzina: " + now);
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
         return now.format(format);
     }
