@@ -33,6 +33,7 @@ public class RaportFactory {
             case FILTER_BY_TAG:
                 generateRaport = new FilterByTagReport();
                 generateRaport.setInputData(projectList);
+                ((FilterByTagReport) generateRaport).setFilterData(inputManager.getTags());
                 raport = new FilterByTagReport().generateReport();
                 break;
             default:
