@@ -1,13 +1,12 @@
 package pl.edu.agh.mwo.report.project.tests;
 
 
+import org.junit.Test;
 import pl.edu.agh.mwo.report.project.reports.ExcelPrinter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.testng.annotations.Test;
 
 public class ExcelPrinterTest {
 

@@ -2,7 +2,7 @@ package pl.edu.agh.mwo.report.project;
 
 
 import pl.edu.agh.mwo.report.project.model.Project;
-import pl.edu.agh.mwo.report.project.reports.Raport2;
+//import pl.edu.agh.mwo.report.project.reports.Raport2;
 import pl.edu.agh.mwo.report.project.reports.TableReport;
 
 import java.io.IOException;
@@ -26,9 +26,9 @@ public class Main {
 
         System.out.println("Raport");
 
-        Raport2 raport2 = new Raport2();
-        TableReport tableReport = raport2.generate(projectList);
-
-        tableReport.print();
+//        Raport2 raport2 = new Raport2();
+//        TableReport tableReport = raport2.generate(projectList);
+//
+//        tableReport.print();
     }
 }
