@@ -1,5 +1,7 @@
 package pl.edu.agh.mwo.report.project;
 
+import pl.edu.agh.mwo.report.project.model.Project;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -21,9 +23,9 @@ public class Main {
 
         System.out.println("Raport");
 
-        Raport2 raport2 = new Raport2();
-        TableReport tableReport = raport2.generate(projectList);
-
-        tableReport.print();
+//        Raport2 raport2 = new Raport2();
+//        TableReport tableReport = raport2.generate(projectList);
+//
+//        tableReport.print();
     }
 }
