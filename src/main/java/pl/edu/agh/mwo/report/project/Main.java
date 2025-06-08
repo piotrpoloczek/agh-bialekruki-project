@@ -25,8 +25,8 @@ public class Main {
 
         System.out.println("Raport");
 
-        HoursPerProjectPercent raport2 = new HoursPerProjectPercent();
-        TableReport tableReport = raport2.generate(projectList);
+        HoursPerProjectPercent raport3 = new HoursPerProjectPercent();
+        TableReport tableReport = raport3.generate(projectList);
 
         tableReport.print();
     }
