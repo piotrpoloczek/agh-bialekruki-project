@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-public class Raport1 {
+public class UserHoursAllProjects {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours");
         List<List<String>> rows = new ArrayList<>();
