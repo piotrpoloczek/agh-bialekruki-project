@@ -1,10 +1,10 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -68,7 +68,7 @@ public class ExcelPrinter {
 
     private void createPackage() throws IOException {
 
-        Workbook workbook = new XSSFWorkbook();
+        Workbook workbook = new HSSFWorkbook();
         Sheet sheet = workbook.createSheet(getTitle());
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
 
@@ -97,7 +97,7 @@ public class ExcelPrinter {
         String folderName = madePackage();
         String currentDate = currentDate();
 
-        FileOutputStream out = new FileOutputStream(folderName + "/" + getTitle() + "_" + currentDate + ".xlsx");
+        FileOutputStream out = new FileOutputStream(folderName + "/" + getTitle() + "_" + currentDate + ".xls");
         workbook.write(out);
         out.close();
     }
