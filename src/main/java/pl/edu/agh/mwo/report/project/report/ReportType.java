@@ -27,7 +27,13 @@ public enum ReportType {
      * Report showing the top 10 entries based on specific criteria.
      * Typically used to highlight highest time consumers or other key metrics.
      */
-    TOP_10;
+    TOP_10,
+
+    /**
+     * Report showing the task only with specified tags
+     */
+    FILTER_BY_TAG;
+
 
     /**
      * Converts a numeric value to the corresponding ReportType enum constant.
@@ -51,6 +57,8 @@ public enum ReportType {
                 return DETAILS_PER_USER;
             case "4":
                 return TOP_10;
+            case "5":
+                return FILTER_BY_TAG;
             default:
                 return null;
         }
