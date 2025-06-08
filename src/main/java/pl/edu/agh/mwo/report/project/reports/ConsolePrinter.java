@@ -100,7 +100,7 @@ public class ConsolePrinter {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
                 LocalDate date = LocalDate.parse(cell, formatter);
                 dates.add(date);
-                break; // Assume only one date per row
+                break;
             } catch (Exception ignored) {}
         }
     }
