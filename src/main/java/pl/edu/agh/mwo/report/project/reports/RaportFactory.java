@@ -3,11 +3,12 @@ package pl.edu.agh.mwo.report.project.reports;
 import pl.edu.agh.mwo.report.project.InputManager;
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.TableReport;
+
 import pl.edu.agh.mwo.report.project.report.ReportDetailsPerUser;
-import pl.edu.agh.mwo.report.project.report.ReportFilterByTag;
 import pl.edu.agh.mwo.report.project.report.ReportHoursPerProjectPercent;
 import pl.edu.agh.mwo.report.project.report.ReportUserHoursAllProjects;
-import pl.edu.agh.mwo.report.project.report.ReportTop10;
+import pl.edu.agh.mwo.report.project.report.ReportFilterByTag;
+import pl.edu.agh.mwo.report.project.report.Top10Report;
 
 
 import java.util.List;
@@ -34,9 +35,9 @@ public class RaportFactory {
                 raport = generateRaport.generateReport();
                 break;
             case TOP_10:
-                generateRaport = new ReportTop10();
+                generateRaport = new Top10Report();
                 generateRaport.setInputData(projectList);
-                raport = new ReportTop10().generateReport();
+                raport = new Top10Report().generateReport();
                 break;
             case FILTER_BY_TAG:
                 generateRaport = new ReportFilterByTag();

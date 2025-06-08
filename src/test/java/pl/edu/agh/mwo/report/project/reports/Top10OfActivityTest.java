@@ -2,8 +2,10 @@ package pl.edu.agh.mwo.report.project.reports;
 
 import org.junit.jupiter.api.Test;
 import pl.edu.agh.mwo.report.project.model.Project;
+import pl.edu.agh.mwo.report.project.model.TableReport;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
+import pl.edu.agh.mwo.report.project.report.Top10Report;
 
 import java.util.Date;
 import java.util.List;
