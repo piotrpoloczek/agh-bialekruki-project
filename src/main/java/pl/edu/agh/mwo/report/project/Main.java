@@ -26,9 +26,5 @@ public class Main {
         }
 
         ReportType reportType = inputManager.getReportType();
-
-
-        // Generate report from. factory
-//        TableReport tableReport = RaportFactory.getRaport(inputManager, projectList);
     }
 }
