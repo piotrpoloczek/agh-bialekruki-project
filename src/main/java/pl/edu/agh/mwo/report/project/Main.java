@@ -2,11 +2,16 @@ package pl.edu.agh.mwo.report.project;
 
 
 import pl.edu.agh.mwo.report.project.model.Project;
-import pl.edu.agh.mwo.report.project.reports.Raport2;
+import pl.edu.agh.mwo.report.project.model.Task;
+import pl.edu.agh.mwo.report.project.model.User;
+import pl.edu.agh.mwo.report.project.reports.HoursPerProject;
+
 import pl.edu.agh.mwo.report.project.reports.TableReport;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,9 +31,10 @@ public class Main {
 
         System.out.println("Raport");
 
-        Raport2 raport2 = new Raport2();
+        HoursPerProject raport2 = new HoursPerProject();
         TableReport tableReport = raport2.generate(projectList);
 
         tableReport.print();
     }
 }
+
