@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RaportFactory {
 
-    public static TableReport getRaport(InputManager inputManager, List<Project> projectList) {
+    public static TableReport getReport(InputManager inputManager, List<Project> projectList) {
         TableReport raport = null;
         GenerateRaport generateRaport = null;
         switch (inputManager.getReportType()) {

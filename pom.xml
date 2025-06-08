@@ -66,6 +66,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
@@ -109,11 +115,10 @@
                         </archive>
                     </configuration>
                 </plugin>
-                <dependency>
-                    <groupId>org.apache.maven.plugins</groupId>
+                <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.5.0</version>
-                </dependency>
+                </plugin>
                 <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>

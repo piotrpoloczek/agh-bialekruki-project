@@ -24,9 +24,8 @@ public class TableReport {
     public void print() {
         System.out.println(name);
         System.out.println("Headers: " + headers);
+        System.out.println("Values: " + values);
         values.forEach(System.out::println);
         errors.forEach(System.out::println);
-        ExcelPrinter excelPrinter = new ExcelPrinter();
-        excelPrinter.printReport(headers, values, name);
     }
 }
