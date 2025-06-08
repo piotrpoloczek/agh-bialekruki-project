@@ -1,14 +1,7 @@
 package pl.edu.agh.mwo.report.project.printers;
 
-
-<<<<<<< HEAD
 import org.junit.Test;
 import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
-=======
-import org.junit.jupiter.api.Test;
-import pl.edu.agh.mwo.report.project.reports.ExcelPrinter;
->>>>>>> main
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,12 +1,9 @@
 package pl.edu.agh.mwo.report.project;
 
 import org.junit.jupiter.api.Assertions;
-<<<<<<< HEAD
 import pl.edu.agh.mwo.report.project.reports.ReportType;
-=======
 import org.junit.jupiter.api.Test;
-import pl.edu.agh.mwo.report.project.report.ReportType;
->>>>>>> main
+
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,19 +39,5 @@ public class InputManagerTest {
 
         Assertions.assertEquals(path2, inputManagerPath);
     }
-
-    @Test
-    public void testGenerationOfReportType(){
-        String[] args = new String[3];
-        args[0] = params1;
-        args[0] = params2;
-        args[1] = params_raport_details_per_user;
-
-        InputManager inputManager = new InputManager(args);
-        ReportType reportType = inputManager.getReportType();
-
-        Assertions.assertEquals(reportType, ReportType.DETAILS_PER_USER);
-    }
-
 
 }

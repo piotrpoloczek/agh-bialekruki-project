@@ -1,18 +1,16 @@
-package pl.edu.agh.mwo.report.project.reports;
+package pl.edu.agh.mwo.report.project.model;
 
 import lombok.Getter;
-import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
-import pl.edu.agh.mwo.report.project.printer.ExcelPrinter;
 
 import java.util.List;
 
 @Getter
 public class TableReport {
 
-    private String name;
-    private List<String> headers;
-    private List<List<String>> values;
-    private List<ErrorFromExcelParser> errors;
+    private final String name;
+    private final List<String> headers;
+    private final List<List<String>> values;
+    private final List<ErrorFromExcelParser> errors;
 
     public TableReport(String name, List<String> headers, List<List<String>> values, List<ErrorFromExcelParser> errors) {
         this.name = name;
@@ -24,9 +22,8 @@ public class TableReport {
     public void print() {
         System.out.println(name);
         System.out.println("Headers: " + headers);
+        System.out.println("Values: " + values);
         values.forEach(System.out::println);
         errors.forEach(System.out::println);
-        ExcelPrinter excelPrinter = new ExcelPrinter();
-        excelPrinter.printReport(headers, values, name);
     }
 }

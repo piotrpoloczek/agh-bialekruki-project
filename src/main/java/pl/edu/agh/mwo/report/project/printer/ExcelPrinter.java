@@ -75,12 +75,12 @@ public class ExcelPrinter {
         String folderName = madePackage();
         String currentDate = currentDate();
 
-        FileOutputStream out = new FileOutputStream(folderName + "/" + title + "_" + currentDate + ".xlsx");
+        FileOutputStream out = new FileOutputStream(folderName + "/" + title + "_" + currentDate + ".xls");
         workbook.write(out);
         out.close();
     }
 
-    public void printReport(List<String> headers, List<List<String>> rows, String title)  {
+    public void printReport(List<String> headers, List<List<String>> rows, String title) {
         try {
             createPackage(headers, rows, title);
         } catch (IOException e) {

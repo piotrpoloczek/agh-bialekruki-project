@@ -1,6 +1,5 @@
 package pl.edu.agh.mwo.report.project;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Slf4j
+
 public class ExcelParser {
 
     public static List<Project> parseExcelToProjectList(Path givenPath) throws IOException {
@@ -59,7 +58,7 @@ public class ExcelParser {
                 projects.add(project);
             } else {
                 Project projectFound = projects.stream().filter(
-                        project -> project.getName().equals(sheet.getSheetName()))
+                                project -> project.getName().equals(sheet.getSheetName()))
                         .findFirst()
                         .orElseThrow();
                 User user = new User(nameWithoutExtension);
