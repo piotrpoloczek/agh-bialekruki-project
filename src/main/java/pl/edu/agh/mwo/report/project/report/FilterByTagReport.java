@@ -1,11 +1,10 @@
-package pl.edu.agh.mwo.report.project.reports;
+package pl.edu.agh.mwo.report.project.report;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
-import pl.edu.agh.mwo.report.project.model.Project;
-import pl.edu.agh.mwo.report.project.model.Task;
-import pl.edu.agh.mwo.report.project.model.User;
+import pl.edu.agh.mwo.report.project.model.*;
+import pl.edu.agh.mwo.report.project.reports.GenerateRaport;
+import pl.edu.agh.mwo.report.project.reports.ParseFilter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +19,7 @@ public class FilterByTagReport implements GenerateRaport, ParseFilter {
     private List<String> headers = Arrays.asList("User name", "Date", "Task name", "Time spent");
     private List<List<String>> rows = new ArrayList<>();
     private List<ErrorFromExcelParser> errors = new ArrayList<>();
+
     @Override
     public TableReport generateReport() {
         for (Project project : projects) {
@@ -39,15 +39,20 @@ public class FilterByTagReport implements GenerateRaport, ParseFilter {
 
     private void getTasksAndFillAllRows(User user, List<Task> taskList) {
         for (Task task : taskList) {
+
             String name = task.getName();
+            if (name == null) {
+                continue;
+            }
             String[] strings = name.split(" ");
             fillTheRowsByData(user, task, strings);
+
         }
     }
 
     private void fillTheRowsByData(User user, Task task, String[] strings) {
-        for (int i = 0; i < strings.length ; i++) {
-            if(tags.contains(strings[i].toLowerCase())) {
+        for (String string : strings) {
+            if (tags.contains(string.toLowerCase())) {
                 rows.add(Arrays.asList(
                         user.getName(),
                         task.getDate().toString(),
@@ -61,7 +66,7 @@ public class FilterByTagReport implements GenerateRaport, ParseFilter {
 
     @Override
     public void setInputData(List<Project> projects) {
-        setProjects(projects) ;
+        setProjects(projects);
     }
 
     @Override
