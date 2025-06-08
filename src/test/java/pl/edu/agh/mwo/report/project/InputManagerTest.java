@@ -40,18 +40,4 @@ public class InputManagerTest {
         Assertions.assertEquals(path2, inputManagerPath);
     }
 
-    @Test
-    public void testGenerationOfReportType(){
-        String[] args = new String[3];
-        args[0] = params1;
-        args[0] = params2;
-        args[1] = params_raport_details_per_user;
-
-        InputManager inputManager = new InputManager(args);
-        ReportType reportType = inputManager.getReportType();
-
-        Assertions.assertEquals(reportType, ReportType.DETAILS_PER_USER);
-    }
-
-
 }

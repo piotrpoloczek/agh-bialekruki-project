@@ -80,7 +80,7 @@ public class ExcelPrinter {
         out.close();
     }
 
-    public void printReport(List<String> headers, List<List<String>> rows, String title)  {
+    public void printReport(List<String> headers, List<List<String>> rows, String title) {
         try {
             createPackage(headers, rows, title);
         } catch (IOException e) {

@@ -1,12 +1,11 @@
 package pl.edu.agh.mwo.report.project;
 
-
 import pl.edu.agh.mwo.report.project.model.Project;
-import pl.edu.agh.mwo.report.project.reports.ReportType;
+import pl.edu.agh.mwo.report.project.model.TableReport;
+import pl.edu.agh.mwo.report.project.reports.RaportFactory;
 
 import java.io.IOException;
 import java.util.List;
-
 
 
 public class Main {
@@ -17,12 +16,9 @@ public class Main {
         InputManager inputManager = new InputManager(args);
         List<Project> projectList = ExcelParser.parseExcelToProjectList(inputManager.getAbsolutePath());
 
+        TableReport tableReport = RaportFactory.getRaport(inputManager, projectList);
+        System.out.println(tableReport.getName());
 
-        for (Project project : projectList) {
-            System.out.println("\nProject:");
-            System.out.println(project);
-        }
-
-        ReportType reportType = inputManager.getReportType();
+        tableReport.print();
     }
 }
