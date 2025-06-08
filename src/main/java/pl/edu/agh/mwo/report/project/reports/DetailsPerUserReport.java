@@ -12,6 +12,5 @@ public class DetailsPerUserReport implements GenerateRaport {
 
     @Override
     public void setInputData(List<Project> projects) {
-
     }
 }
