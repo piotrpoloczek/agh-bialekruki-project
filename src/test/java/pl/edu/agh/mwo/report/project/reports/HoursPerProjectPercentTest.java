@@ -32,7 +32,7 @@ class HoursPerProjectPercentTest {
         List<Project> projects = List.of(project1, project2);
 
 
-        TableReport report = new HoursPerProjectPercent().generate(projects);
+        TableReport report = new HoursPerProjectPercentReport().generate(projects);
 
 
         assertEquals("Raport 3", report.getName());
@@ -66,7 +66,7 @@ class HoursPerProjectPercentTest {
         Project p2 = new Project("Beta");
         p2.addUser(u2);
 
-        TableReport report = new HoursPerProjectPercent().generate(List.of(p1, p2));
+        TableReport report = new HoursPerProjectPercentReport().generate(List.of(p1, p2));
 
         List<List<String>> rows = report.getValues();
 
