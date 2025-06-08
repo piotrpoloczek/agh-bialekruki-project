@@ -1,5 +1,6 @@
 package pl.edu.agh.mwo.report.project.reports;
 
+import pl.edu.agh.mwo.report.project.model.ErrorFromExcelParser;
 import pl.edu.agh.mwo.report.project.model.Project;
 import pl.edu.agh.mwo.report.project.model.Task;
 import pl.edu.agh.mwo.report.project.model.User;
@@ -10,30 +11,50 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-public class UserHoursAllProjectsReport {
+public class UserHoursAllProjectsReport implements GenerateRaport {
     public TableReport generate(List<Project> projects) {
         List<String> headers = Arrays.asList("Name", "Hours");
         List<List<String>> rows = new ArrayList<>();
+        List<ErrorFromExcelParser> errors = new ArrayList<>();
 
-        Map<String, Double> userHours = new HashMap<>();
+        Map<User, Double> userHours = new HashMap<>();
 
         for (Project project : projects) {
+            List<ErrorFromExcelParser> errorFromExcelParserList = project.getErrorFromExcelParserList();
+            errors.addAll(errorFromExcelParserList);
+
             for (User user : project.getUserList()) {
-                double totalHours = 0.0;
-                for (Task task : user.getTaskList()) {
-                    totalHours += task.getTimeSpentOnTheTask();
+                if (!userHours.containsKey(user)) {
+                    double totalHours = 0.0;
+                    for (Task task : user.getTaskList()) {
+                        totalHours += task.getTimeSpentOnTheTask();
+                    }
+                    userHours.put(user, userHours.getOrDefault(user, 0.0) + totalHours);
+                } else {
+                    double totalHours = userHours.get(user);
+                    for (Task task : user.getTaskList()) {
+                        totalHours += task.getTimeSpentOnTheTask();
+                    }
+                    userHours.put(user, totalHours);
                 }
-
-                String userName = user.getName();
-
-                userHours.put(userName, userHours.getOrDefault(userName, 0.0) + totalHours);
             }
         }
 
-        for (Map.Entry<String, Double> entry : userHours.entrySet()) {
-            rows.add(Arrays.asList(entry.getKey(), String.format("%.2f", entry.getValue())));
+
+        for (Map.Entry<User, Double> entry : userHours.entrySet()) {
+            rows.add(Arrays.asList(entry.getKey().getName(), String.format("%.2f", entry.getValue())));
         }
 
-        return new TableReport("Raport 1", headers, rows);
+        return new TableReport("Raport 1", headers, rows, errors);
+    }
+
+    @Override
+    public TableReport generateReport() {
+        return null;
+    }
+
+    @Override
+    public void setInputData(List<Project> projects) {
+
     }
 }
