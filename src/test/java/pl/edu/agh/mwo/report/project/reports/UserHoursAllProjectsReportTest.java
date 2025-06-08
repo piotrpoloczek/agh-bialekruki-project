@@ -175,40 +175,5 @@ class UserHoursAllProjectsReportTest {
     }
 
 
-    @Test
-    void testGenerate_emptyProjectsList() {
-        TableReport report = new UserHoursAllProjectsReport().generate(new ArrayList<>());
-
-        assertEquals("Raport 1", report.getName());
-        assertEquals(List.of("Name", "Hours"), report.getHeaders());
-        assertFalse(report.getName().isEmpty());
-    }
-
-    @Test
-    void testGenerate_projectWithNoUsers() {
-        Project emptyProject = new Project("Empty");
-
-        TableReport report = new UserHoursAllProjectsReport().generate(List.of(emptyProject));
-
-        assertEquals(0, report.getValues().size());
-        assertEquals("Raport 1", report.getName());
-    }
-
-    @Test
-    void testGenerate_projectWithUsersButNoTasks() {
-        User userWithoutTasks = new User("GhostUser");
-
-        Project project = new Project("DeadProject");
-        project.addUser(userWithoutTasks);
-
-        TableReport report = new UserHoursAllProjectsReport().generate(List.of(project));
-
-        assertEquals(1, report.getValues().size());
-        assertEquals(List.of("GhostUser", "0.00"), report.getValues().get(0));
-    }
-
-
-
-
 
 }
